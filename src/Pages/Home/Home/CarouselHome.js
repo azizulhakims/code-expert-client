@@ -12,7 +12,7 @@ const CarouselHome = () => {
 
                     <img
                         className="h-30 w-100"
-                        style={{ display: 'inline-block', height: 300, objectFit: 'cover' }}
+                        style={{ display: 'inline-block', height: 600, objectFit: 'cover' }}
                         src={Brand1}
                         alt="First slide"
                     />
@@ -24,7 +24,7 @@ const CarouselHome = () => {
                 <Carousel.Item interval={500}>
                     <img
                         className=" h-30 w-100"
-                        style={{ display: 'inline-block', height: 300, objectFit: 'cover' }}
+                        style={{ display: 'inline-block', height: 600, objectFit: 'cover' }}
                         src={Brand2}
                         alt="Second slide"
                     />
@@ -36,7 +36,7 @@ const CarouselHome = () => {
                 <Carousel.Item>
                     <img
                         className=" h-30 w-100"
-                        style={{ display: 'inline-block', height: 300, objectFit: 'cover' }}
+                        style={{ display: 'inline-block', height: 600, objectFit: 'cover' }}
                         src={Brand3}
                         alt="Third slide"
                     />

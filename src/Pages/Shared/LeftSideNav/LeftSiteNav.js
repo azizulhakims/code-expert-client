@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const LeftSiteNav = () => {
@@ -13,16 +14,17 @@ const LeftSiteNav = () => {
     }, [])
 
     return (
-        <div>
-            <h4>Languages List :{categories.length}</h4>
+        <Container>
+
             <div>
+                <h4>Languages List :{categories.length}</h4>
                 {
                     categories.map(category => <p key={category.id}>
                         <Link to={`/category/${category.id}`} >{category.name}</Link>
                     </p>)
                 }
             </div>
-        </div>
+        </Container>
     );
 };
 
