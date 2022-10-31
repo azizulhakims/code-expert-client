@@ -6,9 +6,14 @@ import { Link } from 'react-router-dom';
 import { FaDiscord, FaGithub, FaGoogle, FaYoutube } from 'react-icons/fa';
 import { FiFacebook, FiLogIn, FiTwitter } from 'react-icons/fi';
 import { RiWhatsappFill } from 'react-icons/ri';
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 
 const Footer = () => {
+
+
     return (
         <div className="bg-dark text-white p-4">
             <Container>

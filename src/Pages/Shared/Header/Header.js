@@ -7,8 +7,19 @@ import { Link } from 'react-router-dom';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import LeftSiteNav from '../LeftSideNav/LeftSiteNav';
 import Logo from '../../../assets/Untitled-1.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { Button, Image } from 'react-bootstrap';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top" className=''>
             <Container>
@@ -25,11 +36,43 @@ const Header = () => {
                             <Link className='text-decoration-none text-white m-3'>Blog</Link>
                         </Nav.Link>
                     </Nav>
+                    <Navbar.Collapse className="justify-content-end">
+                        <Nav>
+                            <Nav.Link >
+                                {
+                                    user?.uid ?
+                                        <>
+                                            <span>{user?.displayName}</span>
+                                            <Button variant="info" onClick={handleLogOut}>Logout</Button>
+                                        </>
+                                        :
+                                        <>
+                                            <Link to={'/login'}><Button variant="primary">Login</Button> </Link>
+                                            <Link to={'/register'}>Register</Link>
+                                        </>
+                                }
+
+                            </Nav.Link>
+                            <Nav.Link>
+                                {user?.photoURL ?
+                                    <Image
+                                        style={{ height: '30px' }} roundedCircle
+                                        src={user.photoURL}></Image>
+                                    : <FaUser></FaUser>
+
+                                }
+                            </Nav.Link>
+                        </Nav>
+
+
+
+                    </Navbar.Collapse>
                     <div className='d-lg-none text-white'>
                         <LeftSiteNav></LeftSiteNav>
                     </div>
+
                 </Navbar.Collapse>
-            </Container>
+            </Container >
         </Navbar >
     );
 };

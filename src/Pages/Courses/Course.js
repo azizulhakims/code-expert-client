@@ -18,7 +18,7 @@ const Course = () => {
     useEffect(() => {
         axios.get('http://localhost:5000/course-categories').then(res => setCategories(res.data))
     }, [])
-    console.log(filterCourses)
+    // console.log(filterCourses)
     return (
         <div className='container'>
             <div className="row">
