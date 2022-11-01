@@ -53,7 +53,7 @@ const Header = () => {
                                 }
 
                             </Nav.Link>
-                            <Nav.Link>
+                            <Link to={'/profile'}>
                                 {user?.photoURL ?
                                     <Image
                                         style={{ height: '30px' }} roundedCircle
@@ -61,7 +61,7 @@ const Header = () => {
                                     : <FaUser></FaUser>
 
                                 }
-                            </Nav.Link>
+                            </Link>
                         </Nav>
 
 

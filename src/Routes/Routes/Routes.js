@@ -10,6 +10,7 @@ import SinglePremium from "../../Pages/Courses/SinglePremium";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
+import Profile from "../../Pages/Others/Profile/Profile";
 import TermsAndConditions from "../../Pages/Others/TermsAndConditions/TermsAndConditions";
 
 
@@ -43,6 +44,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+
+            {
+                path: '/profile',
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
 
             {
