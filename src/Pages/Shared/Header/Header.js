@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { Button, Image } from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa';
+import { BsToggleOff, BsToggleOn } from "react-icons/bs";
 
 const Header = () => {
     const { user, back, setBack, logOut } = useContext(AuthContext)
@@ -39,7 +40,7 @@ const Header = () => {
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>
 
-                            <Button onClick={() => setBack(!back)}>Click</Button>
+                            <Button onClick={() => setBack(!back)}>{back ? <BsToggleOn></BsToggleOn> : <BsToggleOff></BsToggleOff>}</Button>
 
                             <Nav.Link >
                                 {
