@@ -14,7 +14,7 @@ const LeftSiteNav = () => {
     }, [])
 
     return (
-        <Container>
+        <Container className='p-4'>
 
             <div>
                 <h4>Languages List :{categories.length}</h4>

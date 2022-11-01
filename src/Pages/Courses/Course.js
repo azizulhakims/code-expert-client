@@ -21,11 +21,11 @@ const Course = () => {
     // console.log(filterCourses)
     return (
         <div className='container'>
-            <div className="row">
+            <div className="row p-4">
                 <div className="col-md-3">
                     {
                         categories.map(item => <p key={item.id}>
-                            <Button onClick={() => setCatId(item.id)}>{item.name}</Button>
+                            <Button variant='light' onClick={() => setCatId(item.id)}>{item.name}</Button>
                         </p>)
                     }
                 </div>

@@ -18,7 +18,7 @@ const CourseDetailData = () => {
                     {details}
                 </Card.Text>
                 <div>
-                    <span> <Link to={'/courses'}><Button variant="primary">All Course Page</Button></Link>  <Button variant="primary">Get Premium Access</Button></span>
+                    <span> <Link to={'/courses'}><Button variant="primary">All Course Page</Button></Link>  <Link to={`/premium/${course?._id}`}><Button variant="primary">Get Premium Access</Button></Link></span>
                 </div>
             </Card.Body>
         </Card>

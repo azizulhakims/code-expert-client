@@ -33,7 +33,7 @@ const Header = () => {
                             <Link className='text-decoration-none text-white m-3'>FAQ</Link>
                         </Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
-                            <Link className='text-decoration-none text-white m-3'>Blog</Link>
+                            <Link to={'/blog'} className='text-decoration-none text-white m-3'>Blog</Link>
                         </Nav.Link>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
@@ -48,7 +48,7 @@ const Header = () => {
                                         :
                                         <>
                                             <Link to={'/login'}><Button variant="primary">Login</Button> </Link>
-                                            <Link to={'/register'}>Register</Link>
+
                                         </>
                                 }
 

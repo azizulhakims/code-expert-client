@@ -1,4 +1,5 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import toast, { Toaster } from 'react-hot-toast';
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import { ButtonGroup } from 'react-bootstrap';
@@ -6,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { FiLogIn } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
@@ -16,10 +17,13 @@ const Login = () => {
 
     const [error, setError] = useState('');
 
-    const { ProviderLogin, signIn } = useContext(AuthContext);
+    const { ProviderLogin, signIn, setLoading } = useContext(AuthContext);
 
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -32,7 +36,12 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                navigate('/courses')
+                if (user.emailVerified) {
+                    navigate(from, { replace: true })
+                }
+                else {
+                    toast.error('Your email is not verified. Please verified email')
+                }
             })
 
             .catch(error => {
@@ -42,6 +51,7 @@ const Login = () => {
     }
 
     const googleProvider = new GoogleAuthProvider()
+    const githubProvider = new GithubAuthProvider();
 
 
     const handleGoogleSignIn = () => {
@@ -55,6 +65,20 @@ const Login = () => {
 
 
 
+    }
+
+    const handleGithubSignIn = () => {
+        ProviderLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                console.log(handleGithubSignIn)
+            })
+
+            .catch(error => console.error(error))
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
 
@@ -71,25 +95,28 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Text className="text-danger">
                     {error}
                 </Form.Text>
                 <br></br>
-                <Button variant="primary" type="submit">
-                    Login
-                </Button>
+                <div className=''>
+                    <Button variant="primary" type="submit">
+                        Login
+                    </Button>
+                    <Link className='m-4' to={'/register'}>Register</Link>
+                </div>
                 <br />
                 <>Or</>
                 <br />
 
             </Form>
-            <ButtonGroup >
+            <ButtonGroup className='p-4' >
 
                 <Button onClick={handleGoogleSignIn} variant='outline-primary' className='m-1'> <FaGoogle></FaGoogle> Google Login</Button>
-                <Button variant='outline-warning' className='m-1'> <FaGithub></FaGithub> GitHub Login</Button>
+                <Button onClick={handleGithubSignIn} variant='outline-warning' className='m-1'> <FaGithub></FaGithub> GitHub Login</Button>
             </ButtonGroup>
         </div>
     );

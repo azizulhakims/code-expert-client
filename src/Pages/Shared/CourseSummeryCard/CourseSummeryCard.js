@@ -15,9 +15,9 @@ const CourseSummeryCard = ({ data }) => {
                     <Card.Img variant="top" src={image_url} />
                     <Card.Text>
                         {details.length > 200 ?
-                            <p>{details.slice(0, 250) + '...'} <Link to={`/courses/${_id}`}> <Button>View Derails</Button></Link></p>
+                            <>{details.slice(0, 250) + '...'} <Link to={`/courses/${_id}`}> <Button>View Derails</Button></Link></>
                             :
-                            <p>{details}</p>
+                            <>{details}</>
                         }
                     </Card.Text>
                 </Card.Body>

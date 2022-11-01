@@ -36,7 +36,7 @@ const Footer = () => {
                         <h4>Company</h4>
                         <p><Link to={'aboutUs'}>About Us</Link></p>
                         <p><Link to={'privacyPolicy'}>Privacy policy</Link></p>
-                        <p><Link to={'tramsAndCondition'}>Trams and condition</Link></p>
+                        <p><Link to={'terms'}>Trams and condition</Link></p>
 
                     </Col>
 

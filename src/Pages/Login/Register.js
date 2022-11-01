@@ -1,18 +1,20 @@
+
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-
-import { ButtonGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
 
     const [error, setError] = useState('');
 
-    const { createUser } = useContext(AuthContext);
+    const [accepted, setAccepted] = useState('false');
+
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -21,7 +23,7 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photoURL, email, password);
+        // console.log(name, photoURL, email, password);
 
         createUser(email, password)
             .then(result => {
@@ -29,6 +31,10 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
+                handleUpdateUserProfile(name, photoURL);
+                handleEmailVerification();
+                toast.success('Please verify your email address before login')
+
 
             })
 
@@ -38,8 +44,31 @@ const Register = () => {
 
             });
     }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+
+        updateUserProfile(profile)
+
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
+
+    const handleAccepted = event => {
+        setAccepted(event.target.checked)
+    }
+
+    const handleEmailVerification = () => {
+        verifyEmail()
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
+
     return (
-        <div className='container col-md-5 mx-auto'>
+        <div className='container col-md-5 mx-auto m-4'>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Enter Your Name</Form.Label>
@@ -62,15 +91,22 @@ const Register = () => {
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check
+                        type="checkbox"
+                        onClick={handleAccepted}
+                        label={<>Accept <Link to={'/terms'}>Accept Terms and conditions</Link></>} />
                 </Form.Group>
+                <div>
+                    <Button variant="primary" type="submit" disabled={!accepted}>
+                        Register
+                    </Button>
+                    <Link className='m-4' to={'/login'}><Button variant="primary">Login</Button> </Link>
+                </div>
                 <Form.Text className="text-danger">
                     {error}
                 </Form.Text>
-                <br></br>
-                <Button variant="primary" type="submit">
-                    Register
-                </Button>
+
+
 
             </Form>
         </div>
