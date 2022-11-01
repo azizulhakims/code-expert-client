@@ -22,7 +22,7 @@ const Header = () => {
             .catch(error => console.error(error))
     }
     return (
-        <Navbar collapseOnSelect expand="lg" bg={back ? 'dark' : 'light'} variant={back ? 'dark' : 'light'} sticky="top" className=''>
+        <Navbar collapseOnSelect expand="lg" bg={back ? 'dark' : 'warning'} variant={back ? 'dark' : 'warning'} sticky="top" className=''>
             <Container>
                 <Link to={'/'} className='navbar-brand height="30"'> <img src={Logo} alt='' /></Link>
                 <Link to={'/'} className='text-decoration-none text-white m-3'>Code-Expert</Link>

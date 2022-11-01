@@ -83,7 +83,7 @@ const Login = () => {
 
 
     return (
-        <div className='container col-md-5 mx-auto'>
+        <div className='container col-md-5 mx-auto bg-warning rounded p-4 mt-4 mb-4'>
             <Form onSubmit={handleSubmit} >
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -108,15 +108,17 @@ const Login = () => {
                     </Button>
                     <Link className='m-4' to={'/register'}>Register</Link>
                 </div>
-                <br />
-                <>Or</>
-                <br />
+                <div>
+                    <br />
+                    <h5>OR</h5>
+                    <br />
+                </div>
 
             </Form>
-            <ButtonGroup className='p-4' >
+            <ButtonGroup className='p-4 mb-4' >
 
                 <Button onClick={handleGoogleSignIn} variant='outline-primary' className='m-1'> <FaGoogle></FaGoogle> Google Login</Button>
-                <Button onClick={handleGithubSignIn} variant='outline-warning' className='m-1'> <FaGithub></FaGithub> GitHub Login</Button>
+                <Button onClick={handleGithubSignIn} variant='outline-primary' className='m-1'> <FaGithub></FaGithub> GitHub Login</Button>
             </ButtonGroup>
         </div>
     );
