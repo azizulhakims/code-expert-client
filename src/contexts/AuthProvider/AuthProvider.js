@@ -9,7 +9,7 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-
+    const [back, setBack] = useState(true);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -70,7 +70,9 @@ const AuthProvider = ({ children }) => {
         signIn,
         updateUserProfile,
         verifyEmail,
-        setLoading
+        setLoading,
+        back,
+        setBack
     };
 
     return (

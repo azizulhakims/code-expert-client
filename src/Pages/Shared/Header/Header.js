@@ -13,17 +13,17 @@ import { Button, Image } from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext)
-
+    const { user, back, setBack, logOut } = useContext(AuthContext)
+    console.log(back)
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(error => console.error(error))
     }
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top" className=''>
+        <Navbar collapseOnSelect expand="lg" bg={back ? 'dark' : 'light'} variant={back ? 'dark' : 'light'} sticky="top" className=''>
             <Container>
-                <Link to={'/'} className='navbar-brand height="30"'> <img src={Logo} /></Link>
+                <Link to={'/'} className='navbar-brand height="30"'> <img src={Logo} alt='' /></Link>
                 <Link to={'/'} className='text-decoration-none text-white m-3'>Code-Expert</Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -38,6 +38,9 @@ const Header = () => {
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>
+
+                            <Button onClick={() => setBack(!back)}>Click</Button>
+
                             <Nav.Link >
                                 {
                                     user?.uid ?
@@ -47,6 +50,7 @@ const Header = () => {
                                         </>
                                         :
                                         <>
+
                                             <Link to={'/login'}><Button variant="primary">Login</Button> </Link>
 
                                         </>
