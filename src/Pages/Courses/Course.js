@@ -16,7 +16,7 @@ const Course = () => {
     const filterCourses = courses.filter(item => item.category_id === catId)
 
     useEffect(() => {
-        axios.get('http://localhost:5000/course-categories').then(res => setCategories(res.data))
+        axios.get('https://code-expart-server-azizulhakims.vercel.app/course-categories').then(res => setCategories(res.data))
     }, [])
     // console.log(filterCourses)
     return (

@@ -58,7 +58,7 @@ export const routes = createBrowserRouter([
                     {
                         path: ':id',
                         element: <SinglePremium />,
-                        loader: ({ params }) => fetch(`https://code-expart-server.vercel.app/courses/${params.id}`)
+                        loader: ({ params }) => fetch(`https://code-expart-server-azizulhakims.vercel.app/courses/${params.id}`)
                     }
                 ]
 
@@ -71,7 +71,7 @@ export const routes = createBrowserRouter([
                     {
                         path: ':id',
                         element: <Category></Category>,
-                        loader: ({ params }) => fetch(`https://code-expart-server.vercel.app/categories/${params.id}`)
+                        loader: ({ params }) => fetch(`https://code-expart-server-azizulhakims.vercel.app/categories/${params.id}`)
                     }
                 ]
             },
@@ -83,12 +83,12 @@ export const routes = createBrowserRouter([
                     {
                         path: '',
                         element: <Course></Course>,
-                        loader: ({ params }) => fetch(`https://code-expart-server.vercel.app/courses`),
+                        loader: ({ params }) => fetch(`https://code-expart-server-azizulhakims.vercel.app/courses`),
                     },
                     {
                         path: ':id',
                         element: <CourseDetailData></CourseDetailData>,
-                        loader: ({ params }) => fetch(`https://code-expart-server.vercel.app/courses/${params.id}`),
+                        loader: ({ params }) => fetch(`https://code-expart-server-azizulhakims.vercel.app/courses/${params.id}`),
 
                     },
 
