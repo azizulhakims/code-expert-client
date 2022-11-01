@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaDiscord, FaGithub, FaGoogle, FaYoutube } from 'react-icons/fa';
 import { FiFacebook, FiLogIn, FiTwitter } from 'react-icons/fi';
 import { RiWhatsappFill } from 'react-icons/ri';
-import { useContext } from 'react';
-import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+
 
 
 const Footer = () => {
@@ -22,9 +20,9 @@ const Footer = () => {
                         <div className=''>
                             <h4>You can also login</h4>
                             <ButtonGroup vertical>
-                                <Button variant='outline-success' className='m-1'><FiLogIn></FiLogIn> Email Login</Button>
-                                <Button variant='outline-primary' className='m-1'> <FaGoogle></FaGoogle> Google Login</Button>
-                                <Button variant='outline-warning' className='m-1'> <FaGithub></FaGithub> GitHub Login</Button>
+                                <Link to={'/login'}><Button variant='outline-success' className='m-1'><FiLogIn></FiLogIn> Email Login</Button></Link>
+                                <Link to={'/login'}> <Button variant='outline-primary' className='m-1'> <FaGoogle></FaGoogle> Google Login</Button></Link>
+                                <Link to={'/login'}><Button variant='outline-warning' className='m-1'> <FaGithub></FaGithub> GitHub Login</Button></Link>
                             </ButtonGroup>
                         </div>
                     </Col>

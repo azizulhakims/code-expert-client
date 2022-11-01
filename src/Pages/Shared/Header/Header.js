@@ -72,9 +72,7 @@ const Header = () => {
 
 
                     </Navbar.Collapse>
-                    <div className='d-lg-none text-white'>
-                        <LeftSiteNav></LeftSiteNav>
-                    </div>
+
 
                 </Navbar.Collapse>
             </Container >
